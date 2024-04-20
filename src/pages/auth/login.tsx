@@ -9,10 +9,11 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { toast } from '@/components/ui/use-toast'
 
 const formSchema = z.object({
   email: z.string().email({
-    message: "Invalid email"
+    message: 'Invalid email',
   }),
   password: z.string().min(8, {
     message: 'Password must contain at least 8 characters',
@@ -32,6 +33,14 @@ export default function Login() {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values)
+    toast({
+      title: 'You submitted the following values:',
+      description: (
+        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+          <code className="text-white">{JSON.stringify(values, null, 2)}</code>
+        </pre>
+      ),
+    })
   }
 
   useEffect(() => {
