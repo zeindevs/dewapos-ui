@@ -27,7 +27,9 @@ export default function Navbar() {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavLink to={`/login`}>{({ isActive }) => <span className={navManuStyles(isActive)}>Login</span>}</NavLink>
+                <NavLink to={`/login`}>
+                  {({ isActive }) => <span className={navManuStyles(isActive)}>Login</span>}
+                </NavLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
