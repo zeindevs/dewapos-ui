@@ -5,8 +5,8 @@ import { RouterProvider } from 'react-router-dom'
 import './globals.css'
 
 import { ThemeProvider } from './components/theme-provider'
-import { router } from './router'
 import i18n from './i18n'
+import { router } from './router'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <I18nextProvider i18n={i18n}>
