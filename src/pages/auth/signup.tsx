@@ -55,8 +55,8 @@ export default function SignUp() {
       <div className="py-16">
         <Card className="mx-auto max-w-[400px]">
           <CardHeader>
-            <CardTitle>Sign Up</CardTitle>
-            <CardDescription>Create new account to get started</CardDescription>
+            <CardTitle>Create an account</CardTitle>
+            <CardDescription>Enter the form below to create your account</CardDescription>
           </CardHeader>
           <CardContent>
             <Form {...form}>
@@ -98,28 +98,30 @@ export default function SignUp() {
                         <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                       </FormControl>
                       <div className="space-y-1 leading-none">
-                        <FormLabel>Accept terms and conditions</FormLabel>
+                        <FormLabel className='text-muted-foreground text-sm'>
+                        By clicking continue, you agree to our <span className="underline underline-offset-4 hover:text-primary">Terms of Service</span> and <span className="underline underline-offset-4 hover:text-primary">Privacy Policy</span>.
+                        </FormLabel>
                         <FormDescription></FormDescription>
                       </div>
-                    </FormItem>
+            </FormItem>
                   )}
                 />
-                <Button type="submit" className="w-full">
-                  Sign Up
-                </Button>
-              </form>
-            </Form>
-          </CardContent>
-          <CardFooter className="flex justify-center">
-            <p className="text-center text-sm">
-              Already have an account?{' '}
-              <Link to={`/login`} className="text-primary hover:underline">
-                Login
-              </Link>
-            </p>
-          </CardFooter>
-        </Card>
-      </div>
-    </Layout>
+            <Button type="submit" className="w-full">
+              Sign Up
+            </Button>
+          </form>
+        </Form>
+      </CardContent>
+      <CardFooter className="flex justify-center">
+        <p className="text-center text-sm">
+          Already have an account?{' '}
+          <Link to={`/login`} className="text-primary hover:underline">
+            Login
+          </Link>
+        </p>
+      </CardFooter>
+    </Card>
+      </div >
+    </Layout >
   )
 }
