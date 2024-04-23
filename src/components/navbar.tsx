@@ -16,8 +16,11 @@ import { Button } from './ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuSeparator,
+  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu'
 
@@ -75,10 +78,14 @@ export function AppNavbar() {
           <Link to="/app" className={cn('text-2xl font-medium', sidebar && 'md:hidden')}>
             Dewa<span className="font-bold text-primary">POS</span>
           </Link>
+          <div className='px-5 hidden md:flex'>
+            {/*<MainNav />*/}
+          </div>
         </div>
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-5 px-3 md:px-0">
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-3">
+            <div className="hidden md:block">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="icon">
@@ -91,6 +98,7 @@ export function AppNavbar() {
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
+            </div>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="icon">
@@ -115,13 +123,40 @@ export function AppNavbar() {
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem className="md:hidden">Notification</DropdownMenuItem>
-              <DropdownMenuItem className="md:hidden">Message</DropdownMenuItem>
-              <DropdownMenuSeparator className="md:hidden" />
-              <DropdownMenuItem>
-                <Link to={`/`}>Logout</Link>
-              </DropdownMenuItem>
+            <DropdownMenuContent className="w-56" align="end">
+              <DropdownMenuLabel className="font-normal">
+                <div className="flex flex-col space-y-1">
+                  <p className="text-sm font-medium leading-none">shadcn</p>
+                  <p className="text-xs leading-none text-muted-foreground">
+                    email@example.com
+                  </p>
+                </div>
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                <DropdownMenuItem>
+                  Profile
+                  <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  Billing
+                  <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  Settings
+                  <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+                </DropdownMenuItem>
+                <DropdownMenuItem className="md:hidden">
+                  Notification
+                </DropdownMenuItem>
+                <DropdownMenuItem className="md:hidden">
+                  Message
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator />
+                <Link to={`/`}>
+                  <DropdownMenuItem>Logout</DropdownMenuItem>
+                </Link>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

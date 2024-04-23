@@ -77,7 +77,7 @@ export default function Sidebar({ show }: { show?: boolean }) {
   return (
     <div
       className={cn(
-        'relative min-w-[250px] flex-col border-r ',
+        'relative min-w-56 flex-col border-r ',
         show ? 'flex h-screen' : sidebar ? 'hidden md:flex' : 'hidden',
       )}
     >
@@ -89,8 +89,8 @@ export default function Sidebar({ show }: { show?: boolean }) {
       <div className="py-8"></div>
       <ScrollArea className="h-screen">
         <div className="flex flex-1 flex-col gap-2 p-3">
-          {menus.map((menu) => (
-            <>
+          {menus.map((menu, i) => (
+            <div key={i} className='flex flex-col gap-2'>
               <p className="text-xs font-medium text-muted-foreground">{menu.title}</p>
               {menu.items.map((item, key) => (
                 <NavLink key={key} to={item.path}>
@@ -104,7 +104,7 @@ export default function Sidebar({ show }: { show?: boolean }) {
                   )}
                 </NavLink>
               ))}
-            </>
+            </div>
           ))}
         </div>
       </ScrollArea>
@@ -117,7 +117,7 @@ export function SidebarSheet({ children, className }: React.PropsWithChildren & 
     <div className={className}>
       <Sheet>
         <SheetTrigger asChild>{children}</SheetTrigger>
-        <SheetContent side="left" className="flex w-[250px] flex-col border-none p-0">
+        <SheetContent side="left" className="flex w-56 flex-col border-none p-0">
           <Sidebar show={true} />
         </SheetContent>
       </Sheet>
